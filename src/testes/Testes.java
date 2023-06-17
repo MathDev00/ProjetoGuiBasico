@@ -1,6 +1,9 @@
 package testes;
 
+
+
 import banco.Conexao;
+import controller.LivroController;
 
 public class Testes {
 	
@@ -10,6 +13,10 @@ public class Testes {
 		Conexao conexaoBd = new Conexao();
 		
 		conexaoBd.getConexao();
+		
+		LivroController livroController = new LivroController();
+		
+		livroController.salvar("Harry Potter e as Reliquias da Morte", "JK");
 
 	} 
 	
