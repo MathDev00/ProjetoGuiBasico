@@ -7,23 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import banco.Conexao;
-import model.Livro;
-import model.Livro;
+import model.Aluno;
 
-public class LivroDao {
+
+public class AlunoDao {
 	private Connection conexao;
 
-	public LivroDao() {
+	public AlunoDao() {
 		this.conexao = Conexao.getConexao();
 	}
 
-	public void inserir(Livro c) {
+	public void inserir(Aluno c) {
 //		INSERT INTO tb_cliente (nome, idade, id_cidade) VALUES ("Fulano", 20, 1)
-		String sql = "INSERT INTO livro (nome, autor) VALUES (?, ?)";
+		String sql = "INSERT INTO aluno (nome) VALUES (?, ?)";
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, c.getNome());
-			stmt.setString(2, c.getAutor());
 			stmt.execute();
 			stmt.close();
 		} catch (Exception e) {
@@ -32,8 +31,8 @@ public class LivroDao {
 	}
 
 
-	public Livro buscarPorId(int id) {
-		String sql = "SELECT * FROM livro WHERE id = ?";
+	public Aluno buscarPorId(int id) {
+		String sql = "SELECT * FROM aluno WHERE id = ?";
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, id);
@@ -41,7 +40,7 @@ public class LivroDao {
 			ResultSet resultado = stmt.executeQuery();
 
 			resultado.next();
-			Livro c = new Livro(resultado.getInt("id"), resultado.getString("nome"), resultado.getString("autor"));
+			Aluno c = new Aluno(resultado.getInt("id"), resultado.getString("nome"));
 
 			return c;
 		} catch (Exception e) {
@@ -49,21 +48,25 @@ public class LivroDao {
 		}
 	}
 
-	public List<Livro> listarTodas() {
-		String sql = "SELECT * FROM livro";
+	public List<Aluno> listarTodas() {
+		String sql = "SELECT * FROM aluno";
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			ResultSet resultados = stmt.executeQuery();
-			ArrayList<Livro> livros = new ArrayList<>();
+			ArrayList<Aluno> alunos = new ArrayList<>();
 			while (resultados.next()) {
-				Livro c = new Livro(resultados.getInt("id"), resultados.getString("nome"),
-						resultados.getString("autor"));
-				livros.add(c);
+				Aluno c = new Aluno(resultados.getInt("id"), resultados.getString("nome"));
+				alunos.add(c);
 			}
 			stmt.close();
-			return livros;
+			return alunos;
 		} catch (Exception e) {
 			throw new RuntimeException();
 		}
 	}
+	
+	
+	
+	
+	
 }
