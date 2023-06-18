@@ -21,7 +21,7 @@ public class EmprestimoDao {
 
 	public void inserir(Emprestimo c) {
 //		INSERT INTO tb_cliente (nome, idade, id_cidade) VALUES ("Fulano", 20, 1)
-		String sql = "INSERT INTO emprestimo (id_aluno, id_livro, quantidade_livro, data_emprestimo) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO emprestimo (id_aluno, id_livro, quantidade_livro, data_emprestimo) VALUES (?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, c.getId_aluno().getId());
@@ -47,10 +47,10 @@ public class EmprestimoDao {
 			rs.next();
 
 			AlunoDao alunoDao = new AlunoDao();
-			Aluno aluno = alunoDao.buscarPorId(rs.getInt("id"));
+			Aluno aluno = alunoDao.buscarPorId(rs.getInt("id_aluno"));
 
 			LivroDao livroDao = new LivroDao();
-			Livro livro = livroDao.buscarPorId(rs.getInt("id"));
+			Livro livro = livroDao.buscarPorId(rs.getInt("id_livro"));
 			
 			Emprestimo emprestimo = new Emprestimo(rs.getInt("id"), aluno, livro, rs.getInt("quantidade_livro"), rs.getDate("data_emprestimo"));
 			
