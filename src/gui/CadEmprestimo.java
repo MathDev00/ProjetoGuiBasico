@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -55,7 +56,7 @@ public class CadEmprestimo {
     /**
      * Initialize the contents of the frame.
      */
-    private void initialize() {
+    void initialize() {
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -151,4 +152,10 @@ public class CadEmprestimo {
             }
         });
     }
+    
+    public void show() {
+        frame.setVisible(true);
+    }
+
+	
 }

@@ -13,6 +13,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -61,7 +63,7 @@ public class LivroGui {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -111,4 +113,9 @@ public class LivroGui {
 		btnNewButton.setBounds(178, 232, 85, 21);
 		frame.getContentPane().add(btnNewButton);
 	}
-}
+	 public void show() {
+	        frame.setVisible(true);
+	    }
+
+	}
+
