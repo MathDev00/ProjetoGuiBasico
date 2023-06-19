@@ -146,6 +146,8 @@ public class CadEmprestimo {
 
                 // Chamar o método "salvar" do controlador passando os parâmetros existentes e a data convertida
                 new EmprestimoController().salvar(aluno, livro, Integer.parseInt(quantidadeText), dataEmprestimo);
+                textField.setText(null);
+                formattedTextField.setText(null);
             }
         });
     }
